@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://brp1qr8myntdy"]
+
+[ext_resource type="Script" path="res://scripts/calc.gd" id="1_k6ps8"]
+[ext_resource type="Texture2D" uid="uid://cl1chg1rn4c57" path="res://sprites/calculator.png" id="2_644jp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7tg3b"]
+size = Vector2(113, 112)
+
+[node name="calc" type="Area2D" groups=["enemies"]]
+light_mask = 4
+visibility_layer = 11
+script = ExtResource("1_k6ps8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(7, 7)
+texture = ExtResource("2_644jp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_7tg3b")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

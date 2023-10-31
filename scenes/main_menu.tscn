@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://df0bgtyd3up5j"]
+
+[ext_resource type="Script" path="res://scripts/main_menu.tres.gd" id="1_2n7e5"]
+[ext_resource type="Texture2D" uid="uid://ccq4w3xiav7x" path="res://sprites/title.png" id="1_btrtj"]
+[ext_resource type="FontFile" uid="uid://enutowvvlbei" path="res://sprites/Pixel_font.ttf" id="2_25gsi"]
+[ext_resource type="Script" path="res://scripts/level_select.gd" id="3_ttsgo"]
+[ext_resource type="AudioStream" uid="uid://byg4kdic7xptx" path="res://sounds/mainmenu_song.mp3" id="5_wko6d"]
+
+[node name="main_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2n7e5")
+
+[node name="menu" type="Sprite2D" parent="."]
+position = Vector2(497, 450)
+texture = ExtResource("1_btrtj")
+
+[node name="start_text" type="TextEdit" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 316.0
+offset_top = 520.0
+offset_right = 700.0
+offset_bottom = 576.0
+theme_override_colors/background_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_25gsi")
+theme_override_font_sizes/font_size = 27
+text = "-PRESS SPACE TO START-"
+script = ExtResource("3_ttsgo")
+
+[node name="level_select" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 91.0
+offset_top = 783.0
+offset_right = 277.0
+offset_bottom = 843.0
+theme_override_fonts/font = ExtResource("2_25gsi")
+theme_override_font_sizes/font_size = 27
+text = "LEVEL SELECT"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_wko6d")
+volume_db = -10.0
+autoplay = true
+
+[connection signal="pressed" from="level_select" to="." method="_on_level_select_pressed"]

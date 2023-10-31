@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://r6t6ks65fvg3"]
+
+[ext_resource type="Script" path="res://scripts/FastEnemy.gd" id="1_f3145"]
+[ext_resource type="Texture2D" uid="uid://c24ls463u5f7p" path="res://sprites/mathevil_enemy.png" id="2_qbtg3"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iw086"]
+radius = 49.0
+height = 98.0
+
+[node name="FastEnemy" type="Area2D" groups=["enemies"]]
+collision_layer = 4
+collision_mask = 11
+script = ExtResource("1_f3145")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(6, 6)
+texture = ExtResource("2_qbtg3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_iw086")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

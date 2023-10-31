@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://f6baqnri244m"]
+
+[ext_resource type="Script" path="res://scripts/Transition_3.gd" id="1_o6e1a"]
+[ext_resource type="Texture2D" uid="uid://bk4ghjkwdmquk" path="res://sprites/between_levels.png" id="2_hub2u"]
+
+[node name="Transition_3" type="Node2D"]
+position = Vector2(-992, 714)
+script = ExtResource("1_o6e1a")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="BetweenLevels" type="Sprite2D" parent="."]
+position = Vector2(1496, -260)
+texture = ExtResource("2_hub2u")
+hframes = 3
+vframes = 3
+frame = 6
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

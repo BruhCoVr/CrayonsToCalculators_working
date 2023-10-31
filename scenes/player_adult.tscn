@@ -1,0 +1,95 @@
+[gd_scene load_steps=10 format=3 uid="uid://ccy1300efefvm"]
+
+[ext_resource type="Script" path="res://scripts/player_adult.gd" id="1_jqpu6"]
+[ext_resource type="Texture2D" uid="uid://wb4eagtd7haq" path="res://sprites/cancerboy.png" id="2_1v1rx"]
+[ext_resource type="AudioStream" uid="uid://c7gfnowexcsg" path="res://sounds/projectile sound.mp3" id="3_hcbg7"]
+[ext_resource type="AudioStream" uid="uid://dn375jdjxnehe" path="res://sounds/mytoes2.mp3" id="4_wwewr"]
+
+[sub_resource type="Animation" id="Animation_4r5hx"]
+resource_name = "kid_big"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_milxj"]
+resource_name = "kid_medium"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_4aw5e"]
+resource_name = "kid_small"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rv0u8"]
+_data = {
+"kid_big": SubResource("Animation_4r5hx"),
+"kid_medium": SubResource("Animation_milxj"),
+"kid_small": SubResource("Animation_4aw5e")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_efxbn"]
+size = Vector2(83, 146)
+
+[node name="Player" type="Area2D" groups=["playergroup"]]
+position = Vector2(-3, -1)
+collision_layer = 2
+collision_mask = 21
+script = ExtResource("1_jqpu6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1, 2)
+scale = Vector2(10, 10)
+texture = ExtResource("2_1v1rx")
+hframes = 2
+vframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_rv0u8")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2.5, 4)
+shape = SubResource("RectangleShape2D_efxbn")
+
+[node name="Muzzle" type="Marker2D" parent="."]
+position = Vector2(3, -86)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_hcbg7")
+
+[node name="toes" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_wwewr")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://ddqh75vlroga0"]
+
+[ext_resource type="Script" path="res://scripts/fat_enemy.gd" id="1_wa5x0"]
+[ext_resource type="Texture2D" uid="uid://dqqih1y7wwmcm" path="res://sprites/beetle.png" id="2_g5lwd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_levu7"]
+size = Vector2(96, 129)
+
+[node name="fat_enemy" type="Area2D" groups=["enemies"]]
+script = ExtResource("1_wa5x0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(6, 6)
+texture = ExtResource("2_g5lwd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_levu7")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://3tblnkc2r038"]
+
+[ext_resource type="Texture2D" uid="uid://bk4ghjkwdmquk" path="res://sprites/between_levels.png" id="1_t88vg"]
+[ext_resource type="FontFile" uid="uid://enutowvvlbei" path="res://sprites/Pixel_font.ttf" id="2_gn50g"]
+[ext_resource type="Script" path="res://scenes/TextEdit.gd" id="3_a3wq8"]
+
+[node name="win_screen" type="Node2D"]
+
+[node name="BetweenLevels" type="Sprite2D" parent="."]
+position = Vector2(1502, -281)
+texture = ExtResource("1_t88vg")
+
+[node name="TextEdit" type="TextEdit" parent="."]
+offset_left = 372.0
+offset_top = 393.0
+offset_right = 624.0
+offset_bottom = 495.0
+theme_override_colors/background_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_gn50g")
+theme_override_font_sizes/font_size = 50
+text = "YOU WIN"
+script = ExtResource("3_a3wq8")

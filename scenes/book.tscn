@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://ceewkc6s568pb"]
+
+[ext_resource type="Script" path="res://scripts/book.gd" id="1_311wt"]
+[ext_resource type="Texture2D" uid="uid://ddq02bt71nvl0" path="res://sprites/book.png" id="2_sjcff"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bq1gg"]
+size = Vector2(55, 80)
+
+[node name="Book" type="Area2D" groups=["enemies"]]
+light_mask = 4
+visibility_layer = 11
+script = ExtResource("1_311wt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(5, 5)
+texture = ExtResource("2_sjcff")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2.5, 0)
+shape = SubResource("RectangleShape2D_bq1gg")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

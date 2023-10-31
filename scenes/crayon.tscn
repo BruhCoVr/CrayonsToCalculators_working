@@ -1,0 +1,153 @@
+[gd_scene load_steps=13 format=3 uid="uid://dv6dsjwljddmr"]
+
+[ext_resource type="Script" path="res://scripts/Crayon.gd" id="1_fprab"]
+[ext_resource type="Texture2D" uid="uid://dyviliph1xxwe" path="res://sprites/crayon.png" id="2_8j5rg"]
+
+[sub_resource type="Animation" id="Animation_r00pm"]
+resource_name = "blue_crayon"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+
+[sub_resource type="Animation" id="Animation_fdgro"]
+resource_name = "green_crayon"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+
+[sub_resource type="Animation" id="Animation_wmjwr"]
+resource_name = "pink_crayon"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+
+[sub_resource type="Animation" id="Animation_csq65"]
+resource_name = "purple_crayon"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+
+[sub_resource type="Animation" id="Animation_6k2au"]
+resource_name = "red_crayon"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_hxyik"]
+resource_name = "teal_crayon"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+
+[sub_resource type="Animation" id="Animation_x5ynq"]
+resource_name = "yellow_crayon"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e7532"]
+_data = {
+"blue_crayon": SubResource("Animation_r00pm"),
+"green_crayon": SubResource("Animation_fdgro"),
+"pink_crayon": SubResource("Animation_wmjwr"),
+"purple_crayon": SubResource("Animation_csq65"),
+"red_crayon": SubResource("Animation_6k2au"),
+"teal_crayon": SubResource("Animation_hxyik"),
+"yellow_crayon": SubResource("Animation_x5ynq")
+}
+
+[sub_resource type="GDScript" id="GDScript_1oejj"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7lwg1"]
+radius = 13.0
+height = 102.0
+
+[node name="Crayon" type="Area2D"]
+position = Vector2(-1, -2)
+collision_layer = 8
+collision_mask = 5
+script = ExtResource("1_fprab")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-4.64, 2)
+scale = Vector2(2.42, 6.348)
+texture = ExtResource("2_8j5rg")
+hframes = 3
+vframes = 3
+frame = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_e7532")
+}
+script = SubResource("GDScript_1oejj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4, -1)
+shape = SubResource("CapsuleShape2D_7lwg1")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

@@ -1,0 +1,124 @@
+[gd_scene load_steps=10 format=3 uid="uid://dy2eh11c44wr4"]
+
+[ext_resource type="Script" path="res://scripts/level_select.gd" id="1_yxgqk"]
+[ext_resource type="Texture2D" uid="uid://brboer6j2ukb2" path="res://sprites/sandbox.png" id="2_g82o3"]
+[ext_resource type="Texture2D" uid="uid://cd1o8ypj0xqmc" path="res://sprites/level_select.png" id="2_u3yah"]
+[ext_resource type="FontFile" uid="uid://enutowvvlbei" path="res://sprites/Pixel_font.ttf" id="3_kaet2"]
+[ext_resource type="Texture2D" uid="uid://dd3al24fmw6gj" path="res://sprites/g6level.png" id="3_qtmk6"]
+[ext_resource type="Texture2D" uid="uid://ct5tpc2osrk6y" path="res://sprites/g9level.png" id="4_hrlkl"]
+[ext_resource type="Texture2D" uid="uid://d2amre3ti587u" path="res://sprites/g12level.png" id="5_50bip"]
+[ext_resource type="Texture2D" uid="uid://4dxe6377gvtr" path="res://sprites/unilevel.png" id="6_to44l"]
+[ext_resource type="AudioStream" uid="uid://byg4kdic7xptx" path="res://sounds/mainmenu_song.mp3" id="9_7fcio"]
+
+[node name="level_select" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yxgqk")
+
+[node name="Sandbox" type="Sprite2D" parent="."]
+z_index = 10
+position = Vector2(188, 303)
+scale = Vector2(0.244196, 0.167018)
+texture = ExtResource("2_g82o3")
+metadata/_edit_lock_ = true
+
+[node name="G6Level" type="Sprite2D" parent="."]
+z_index = 10
+position = Vector2(497, 298)
+scale = Vector2(0.218831, 0.161887)
+texture = ExtResource("3_qtmk6")
+metadata/_edit_lock_ = true
+
+[node name="G9Level" type="Sprite2D" parent="."]
+z_index = 10
+position = Vector2(808, 295)
+scale = Vector2(0.220553, 0.16515)
+texture = ExtResource("4_hrlkl")
+metadata/_edit_lock_ = true
+
+[node name="G12Level" type="Sprite2D" parent="."]
+z_index = 10
+position = Vector2(339, 550)
+scale = Vector2(0.220634, 0.171631)
+texture = ExtResource("5_50bip")
+metadata/_edit_lock_ = true
+
+[node name="Unilevel" type="Sprite2D" parent="."]
+z_index = 10
+position = Vector2(657, 550)
+scale = Vector2(0.219687, 0.167331)
+texture = ExtResource("6_to44l")
+metadata/_edit_lock_ = true
+
+[node name="LevelSelect" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(501, 450)
+texture = ExtResource("2_u3yah")
+
+[node name="L1" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 41.0
+offset_top = 223.0
+offset_right = 332.0
+offset_bottom = 419.0
+
+[node name="L2" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 380.0
+offset_top = 217.0
+offset_right = 615.0
+offset_bottom = 417.0
+
+[node name="L3" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 690.0
+offset_top = 215.0
+offset_right = 925.0
+offset_bottom = 447.0
+
+[node name="L4" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 224.0
+offset_top = 470.0
+offset_right = 455.0
+offset_bottom = 681.0
+
+[node name="L5" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 541.0
+offset_top = 468.0
+offset_right = 780.0
+offset_bottom = 709.0
+
+[node name="back_button" type="Button" parent="."]
+z_index = 2
+layout_mode = 1
+anchors_preset = -1
+offset_left = 324.0
+offset_top = 740.0
+offset_right = 631.0
+offset_bottom = 817.0
+theme_override_fonts/font = ExtResource("3_kaet2")
+theme_override_font_sizes/font_size = 27
+text = "BACK TO MAIN MENU"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_7fcio")
+autoplay = true
+
+[connection signal="pressed" from="L1" to="." method="_on_l_1_pressed"]
+[connection signal="pressed" from="L2" to="." method="_on_l_2_pressed"]
+[connection signal="pressed" from="L3" to="." method="_on_l_3_pressed"]
+[connection signal="pressed" from="L4" to="." method="_on_l_4_pressed"]
+[connection signal="pressed" from="L5" to="." method="_on_l_5_pressed"]
+[connection signal="pressed" from="back_button" to="." method="_on_l_1_pressed"]
+[connection signal="pressed" from="back_button" to="." method="_on_back_button_pressed"]

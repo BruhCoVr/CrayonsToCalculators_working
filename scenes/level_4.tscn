@@ -1,0 +1,84 @@
+[gd_scene load_steps=8 format=3 uid="uid://cf4gpve2b57l4"]
+
+[ext_resource type="Script" path="res://scripts/level_4.gd" id="1_h0ko6"]
+[ext_resource type="Texture2D" uid="uid://d2amre3ti587u" path="res://sprites/g12level.png" id="2_lakhw"]
+[ext_resource type="PackedScene" uid="uid://ccy1300efefvm" path="res://scenes/player_adult.tscn" id="3_uy4jl"]
+[ext_resource type="AudioStream" uid="uid://k8yxt5tyusoa" path="res://sounds/MATH.mp3" id="4_eb12h"]
+[ext_resource type="AudioStream" uid="uid://byg4kdic7xptx" path="res://sounds/mainmenu_song.mp3" id="5_1k48r"]
+[ext_resource type="AudioStream" uid="uid://w77shovc3y3m" path="res://sounds/BOOK.mp3" id="5_we3mw"]
+[ext_resource type="AudioStream" uid="uid://15w8yqujh5df" path="res://sounds/CALC.mp3" id="6_xv32u"]
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_h0ko6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+light_mask = 0
+position = Vector2(503, 451)
+scale = Vector2(1.1045, 0.997222)
+texture = ExtResource("2_lakhw")
+region_enabled = true
+region_rect = Rect2(0, 0, 1000, 900)
+
+[node name="Player_3" parent="." instance=ExtResource("3_uy4jl")]
+position = Vector2(472, 765)
+
+[node name="Marker2D_1" type="Marker2D" parent="."]
+position = Vector2(64, -45)
+
+[node name="Marker2D_2" type="Marker2D" parent="."]
+position = Vector2(151, -47)
+
+[node name="Marker2D_3" type="Marker2D" parent="."]
+position = Vector2(926, -41)
+
+[node name="Marker2D_4" type="Marker2D" parent="."]
+position = Vector2(848, -37)
+
+[node name="Marker2D_5" type="Marker2D" parent="."]
+position = Vector2(751, -44)
+
+[node name="Marker2D_6" type="Marker2D" parent="."]
+position = Vector2(650, -43)
+
+[node name="Marker2D_7" type="Marker2D" parent="."]
+position = Vector2(546, -47)
+
+[node name="Marker2D_8" type="Marker2D" parent="."]
+position = Vector2(429, -43)
+
+[node name="Marker2D_9" type="Marker2D" parent="."]
+position = Vector2(331, -45)
+
+[node name="Marker2D_10" type="Marker2D" parent="."]
+position = Vector2(241, -47)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.2
+
+[node name="Timer2" type="Timer" parent="."]
+wait_time = 3.5
+
+[node name="enemy" type="Node2D" parent="."]
+position = Vector2(0, -48)
+
+[node name="math" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_eb12h")
+
+[node name="song" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_1k48r")
+volume_db = -24.0
+autoplay = true
+
+[node name="book" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_we3mw")
+
+[node name="calc" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_xv32u")
+
+[node name="Timer3" type="Timer" parent="."]
+wait_time = 20.0
+
+[connection signal="spawn_pen" from="Player_3" to="." method="_on_player_3_spawn_pen"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer2" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer3" to="." method="_on_timer_3_timeout"]

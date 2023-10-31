@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5t1l52vpypu0"]
+
+[ext_resource type="Script" path="res://scripts/fat_enemy.gd" id="1_lfng2"]
+[ext_resource type="Texture2D" uid="uid://cl1chg1rn4c57" path="res://sprites/calculator.png" id="2_7b2bh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_levu7"]
+size = Vector2(126, 129)
+
+[node name="fat_enemy" type="Area2D" groups=["enemies"]]
+collision_layer = 4
+collision_mask = 11
+script = ExtResource("1_lfng2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(8, 8)
+texture = ExtResource("2_7b2bh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_levu7")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
